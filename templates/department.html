@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+
+{% block content %}
+{%for department in object_list%}
+<a href="">{{department.id}}.  {{department.course}}</a>
+        {% endfor %}
+{% endblock content %}

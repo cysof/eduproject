@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block content %}
+<!--WELCOME NOTE-->
+<h2>Research Project Topics - Download Projects And Research Materials Instantly NO DELAY WE DELIVER...</h2>
+<p>We offer complete final year Research Materials. we do the job on a specialist level.<br>
+We specialise in Nigeria Certificate in Education (NCE) final year project of any kind.<br>
+</p><br>
+<h5>Find Any Project Topic on nceproject</h5>
+<input type="search" placeholder="search...">
+<input type="button" value="search"><br>
+&nbsp;
+<p>
+nceproject.com.ng assists and guides all intrested NCE final Year Students with well researched and quality<br> 
+PROJECT TOPICS, PROJECT IDEAS, PROJECT WORKS, RESEARCH GUIDES and PROJECT MATERIALS at a Very Acceseable PRICE!.</p> 
+
+<p>We understand the rush at school level & we have simplified the process so that you can get your projects Materials<br>
+once paid  ready within 30 minutes and 1 HOUR!!!<br>
+Yes your final year projects Materials can be ready in the following  SIMPLE STEPS...</p>
+<hr>
+<u><h3><b>STEPS TO COMPLETE AND GET YOUR MATERIALS READY</b></h3></u>
+<ol>
+    <li>Simply browse through our research project through the search , view our free chapter 1
+   Satisfied with it? If yes, place an order, if no, contact us for more projects and it related.</li>
+    <li> Place an order to request for complete research material, kindly provide all necessary contact details to enable our team reach out to you if need be.</li>
+    <li>Once payment is confirmed, project research material(s) will be sent within 30 minutes and 1 hour, if delayed (due to any problem), at most 6 hours.</li>
+
+</ol>&nbsp;
+<p>For complain and recomendation feel free to write to us...<a href="">Contact Us</a></p>
+<hr>
+<!--LIST OF PROJECT TOPICS-->
+<h4>LIST OF FREQUENT LOOKED TOPICS</h4>
+<hr>
+{%for project in object_list%}
+<h3><a href="{% url 'content' project.pk%}">{{project.title}}</a> </h3>
+{{project.content|slice:':200'}}
+<hr>
+{%endfor%}
+<div>
+page{{page_obj.number}} of {{page_obj.paginator.num_pages}}
+</div>
+
+<ul style="margin-left:10px;" class="pagination">
+    {%if page_obj.has_previous%}
+    <li> <a href="?page=1">&laquo; first</a><li>
+    <li><a href="?page={{ page_obj.previous_page_number}}">previous</a></li>
+    {%endif%}
+
+    {%if page_obj.has_next%}
+        <li>
+            <a href="?page={{page_obj.next_page_number}}">Next</a>
+        </li>
+        <li>
+            <a href="?page={{page_obj.paginator.num_pages}}">last</a>
+        </li>
+</ul>
+{%endif%}
+<!--END TO THE LIST-->
+{% endblock content %}
